@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'hood',
     'pyuploadcare.dj',
+    'cloudinary',
 ]
 UPLOADCARE = {
     'pub_key': '2b709bca64245dd9e55e',
