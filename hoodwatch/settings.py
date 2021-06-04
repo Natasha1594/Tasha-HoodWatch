@@ -140,6 +140,10 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+AUTHENTICATION_BACKENDS = (
+    ('django.contrib.auth.backends.ModelBackend'),
+)
+
 cloudinary.config( 
   cloud_name = "ddfn18ffx", 
   api_key = "257234146242352", 
