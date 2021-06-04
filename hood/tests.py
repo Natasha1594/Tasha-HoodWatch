@@ -2,6 +2,7 @@ from django import test
 from django.test import TestCase
 from .models import NeighbourHood, Profile, Business, Post
 from django.contrib.auth.models import User
+from django.contrib import auth
 
 class ProfileTest(TestCase):
     def setUp(self):
