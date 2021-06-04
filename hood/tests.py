@@ -23,7 +23,7 @@ class ProfileTest(TestCase):
 class TestPost(TestCase):
     def setUp(self):
         self.profile_test = Profile(name='natasha', user=User(username='natasha1594'))
-        self.profile_test.save()
+        
 
         self.image_test = Post(image='default.png', name='test', caption='default test', user=self.profile_test)
 
