@@ -25,7 +25,7 @@ class TestPost(TestCase):
         self.profile_test = Profile(name='natasha', user=User(username='natasha1594'))
         
 
-        self.image_test = Post(image='default.png', name='test', caption='default test', user=self.profile_test)
+        self.image_test = Post(image='default.png', name='test', user=self.profile_test)
 
     def test_insatance(self):
         self.assertTrue(isinstance(self.image_test, Post))
