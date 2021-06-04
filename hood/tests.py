@@ -16,7 +16,7 @@ class ProfileTest(TestCase):
         self.assertTrue(isinstance(self.profile_test, Profile))
 
     def test_save_method(self):
-        self.natasha.save_profile()
+        self.save_profile()
         editors = Profile.objects.all()
         self.assertTrue(len(editors) > 0)
 
