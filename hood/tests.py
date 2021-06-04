@@ -1,20 +1,21 @@
+from django import test
 from django.test import TestCase
 from .models import NeighbourHood, Profile, Business, Post
 from django.contrib.auth.models import User
 
 class ProfileTest(TestCase):
     def setUp(self):
-        self.dorcas = User(username = 'Natasha',email = 'kinuthianatasha@gmail.com')
-        self.dorcas = Profile(user = Self.dorcas,user = 1,Bio = 'tests',photo = 'test.jpg',date_craeted='dec,01.2020')
+        self.user = User(username='natasha')
+        self.user.save()
+
+        self.profile_test = Profile(id=1, name='image', profile_picture='default.jpg', bio='this is a test profile',
+                                user=self.user)
+
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.dorcas,Profile))
-    def test_save_profile(self):
-        Profile.save_profile(self)
-        all_profiles = Profile.objects.all()
-        self.assertTrue(len(all_profiles),0)
+        self.assertTrue(isinstance(self.profile_test, Profile))
 
-    def test_delete_profile(self):
-        self.dorcas.delete_profile()
-        all_profiles = Profile.objects.all()
-        self.assertEqual(len(all_profiles),0)
+    def test_save_profile(self):
+        self.profile_test.save_profile()
+        after = Profile.objects.all()
+        self.assertTrue(len(after) > 0)
