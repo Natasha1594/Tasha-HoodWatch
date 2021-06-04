@@ -15,10 +15,10 @@ class ProfileTest(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.profile_test, Profile))
 
-    def test_save_profile(self):
-        self.profile_test()
-        after = Profile.objects.all()
-        self.assertTrue(len(after) > 0)
+    def test_save_method(self):
+        self.natasha.save_profile()
+        editors = Profile.objects.all()
+        self.assertTrue(len(editors) > 0)
 
 class TestPost(TestCase):
     def setUp(self):
