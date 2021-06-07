@@ -25,9 +25,9 @@ class ProfileTest(TestCase):
 
 class HoodTest(TestCase):
     def setUp(self):
-        self.user = User(username='kevin_sniper', email='kevin@kevin.com', password='passwadd')
+        self.user = User(username='natasha', email='natasha1594@gmail.com', password='passwadd')
         self.user.save()
-        self.natasha = Profile(bio='A python Programmer', contact='054234444', user=self.user)
+        self.natasha = Profile(bio='A python Programmer', health_tell='054234444', police_number='0786547', user=self.user)
         self.NeighbourHood = NeighbourHood(name = 'Ngong',bio = "Milimani",admin = self.user)
 
     def tearDown(self):
@@ -46,7 +46,7 @@ class HoodTest(TestCase):
 
 class PostTest(TestCase):
     def setUp(self):
-        self.user = User(username='kevin_sniper', email='kevin@kevin.com', password='passwadd')
+        self.user = User(username='natasha1594', email='natasha1594@gmail.com', password='passwadd')
         self.user.save()
         self.kevin = Profile(bio='A python Programmer', contact='054234444', user=self.user)
         self.NeighbourHood = NeighbourHood(name='Ngong', bio="Milimani", admin=self.user)
