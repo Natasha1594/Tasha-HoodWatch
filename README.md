@@ -1,5 +1,10 @@
 # Tasha HoodWatch
 
+---
+
+<img src="images/pic.png">
+
+---
 
 # Description  
 This is a neighborhood app where a user must signup first, be able to join a hood owned by the hood admin, and once you 
