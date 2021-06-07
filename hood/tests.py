@@ -17,7 +17,7 @@ class ProfileTest(TestCase):
         self.assertTrue(isinstance(self.kevin,Profile))
 
     def test_save(self):
-        self.kevin.create_user_profile(self.user,True)
+        Profile.objects.create()
         self.kevin.save_user_profile(self.user)
         users = Profile.objects.all()
         self.assertTrue(len(users)>0)
