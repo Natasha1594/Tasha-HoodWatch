@@ -6,49 +6,65 @@ from django.contrib import auth
 
 class ProfileTest(TestCase):
     def setUp(self):
-        self.user = User(username='natasha')
+        self.user = User(username = 'kevin_sniper', email = 'kevin@kevin.com', password = 'passwadd')
         self.user.save()
+        self.kevin = Profile(bio = 'A python Programmer',contact = '054234444', user = self.user)
 
-        self.profile_test = Profile(id=1, name='image', profile_picture='default.jpg', bio='this is a test profile',
-                                user=self.user)
-
+    def tearDown(self):
+        Profile.objects.all().delete()
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.profile_test, Profile))
+        self.assertTrue(isinstance(self.kevin,Profile))
 
-    def test_save_method(self):
-        self.save_profile()
-        editors = Profile.objects.all()
-        self.assertTrue(len(editors) > 0)
+    def test_save(self):
+        self.kevin.create_user_profile(self.user,True)
+        self.kevin.save_user_profile(self.user)
+        users = Profile.objects.all()
+        self.assertTrue(len(users)>0)
 
-class TestPost(TestCase):
+
+class HoodTest(TestCase):
     def setUp(self):
-        self.profile_test = Profile(name='natasha', user=User(username='natasha1594'))
-        
+        self.user = User(username='kevin_sniper', email='kevin@kevin.com', password='passwadd')
+        self.user.save()
+        self.kevin = Profile(bio='A python Programmer', contact='054234444', user=self.user)
+        self.hood = Hood(name = 'Ngong',bio = "Milimani",admin = self.user)
 
-        self.image_test = Post(image='default.png', name='test', user=self.profile_test)
+    def tearDown(self):
+        Profile.objects.all().delete()
+        self.hood.delete()
 
-    def test_insatance(self):
-        self.assertTrue(isinstance(self.image_test, Post))
+    def test_instance(self):
+        self.assertTrue(isinstance(self.hood,Hood))
 
-    def test_save_image(self):
-        self.image_test.save_image()
-        images = Post.objects.all()
-        self.assertTrue(len(images) > 0)
-
-    def test_delete_image(self):
-        self.image_test.delete_image()
-        after = Profile.objects.all()
-        self.assertTrue(len(after) < 1)
+    def test_save(self):
+        self.hood.save_hood()
+        hoods = Hood.objects.all()
+        self.assertTrue(len(hoods) == 1)
 
 
-class AuthTestCase(TestCase):
+
+class PostTest(TestCase):
     def setUp(self):
-        self.u = User.objects.create_user('test@dom.com', 'test@dom.com', 'pass')
-        self.u.is_staff = True
-        self.u.is_superuser = True
-        self.u.is_active = True
-        self.u.save()
+        self.user = User(username='kevin_sniper', email='kevin@kevin.com', password='passwadd')
+        self.user.save()
+        self.kevin = Profile(bio='A python Programmer', contact='054234444', user=self.user)
+        self.hood = Hood(name='Ngong', bio="Milimani", admin=self.user)
+        self.business = Business(name="brian", owner = self.user, business_description= 'langat',
+                                 locale = self.hood,business_number = 4322323)
+        self.post = Post(title='Postings',post = 'This is the post',
+                         hood = self.hood, poster = self.user)
 
-    def testLogin(self):
-        self.client.login(username='test@dom.com', password='pass')
+    def tearDown(self):
+        Profile.objects.all().delete()
+        self.hood.delete()
+        self.business.delete()
+        self.post.delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.post,Post))
+
+    def test_save(self):
+        self.post.save_post()
+        posts = Post.objects.all()
+        self.assertTrue(len(posts) == 1)
