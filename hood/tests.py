@@ -27,19 +27,19 @@ class HoodTest(TestCase):
     def setUp(self):
         self.user = User(username='kevin_sniper', email='kevin@kevin.com', password='passwadd')
         self.user.save()
-        self.kevin = Profile(bio='A python Programmer', contact='054234444', user=self.user)
-        self.hood = Hood(name = 'Ngong',bio = "Milimani",admin = self.user)
+        self.natasha = Profile(bio='A python Programmer', contact='054234444', user=self.user)
+        self.hood = NeighbourHood(name = 'Ngong',bio = "Milimani",admin = self.user)
 
     def tearDown(self):
         Profile.objects.all().delete()
         self.hood.delete()
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.hood,Hood))
+        self.assertTrue(isinstance(self.hood,NeighbourHood))
 
     def test_save(self):
         self.hood.save_hood()
-        hoods = Hood.objects.all()
+        hoods = NeighbourHood.objects.all()
         self.assertTrue(len(hoods) == 1)
 
 
@@ -49,7 +49,7 @@ class PostTest(TestCase):
         self.user = User(username='kevin_sniper', email='kevin@kevin.com', password='passwadd')
         self.user.save()
         self.kevin = Profile(bio='A python Programmer', contact='054234444', user=self.user)
-        self.hood = Hood(name='Ngong', bio="Milimani", admin=self.user)
+        self.hood = NeighbourHood(name='Ngong', bio="Milimani", admin=self.user)
         self.business = Business(name="brian", owner = self.user, business_description= 'langat',
                                  locale = self.hood,business_number = 4322323)
         self.post = Post(title='Postings',post = 'This is the post',
