@@ -28,17 +28,17 @@ class HoodTest(TestCase):
         self.user = User(username='kevin_sniper', email='kevin@kevin.com', password='passwadd')
         self.user.save()
         self.natasha = Profile(bio='A python Programmer', contact='054234444', user=self.user)
-        self.hood = NeighbourHood(name = 'Ngong',bio = "Milimani",admin = self.user)
+        self.NeighbourHood = NeighbourHood(name = 'Ngong',bio = "Milimani",admin = self.user)
 
     def tearDown(self):
         Profile.objects.all().delete()
-        self.hood.delete()
+        self.NeighbourHood.delete()
 
     def test_instance(self):
         self.assertTrue(isinstance(self.hood,NeighbourHood))
 
     def test_save(self):
-        self.hood.save_hood()
+        self.NeighbourHood.save_hood()
         hoods = NeighbourHood.objects.all()
         self.assertTrue(len(hoods) == 1)
 
@@ -49,7 +49,7 @@ class PostTest(TestCase):
         self.user = User(username='kevin_sniper', email='kevin@kevin.com', password='passwadd')
         self.user.save()
         self.kevin = Profile(bio='A python Programmer', contact='054234444', user=self.user)
-        self.hood = NeighbourHood(name='Ngong', bio="Milimani", admin=self.user)
+        self.NeighbourHood = NeighbourHood(name='Ngong', bio="Milimani", admin=self.user)
         self.business = Business(name="brian", owner = self.user, business_description= 'langat',
                                  locale = self.hood,business_number = 4322323)
         self.post = Post(title='Postings',post = 'This is the post',
@@ -57,7 +57,7 @@ class PostTest(TestCase):
 
     def tearDown(self):
         Profile.objects.all().delete()
-        self.hood.delete()
+        self.NeighbourHood.delete()
         self.business.delete()
         self.post.delete()
 
