@@ -1,6 +1,6 @@
 from django import test
 from django.test import TestCase
-from .models import NeighbourHood, Profile, Business, Post
+from .models import *
 from django.contrib.auth.models import User
 from django.contrib import auth
 
