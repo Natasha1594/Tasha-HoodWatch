@@ -1,1 +1,0 @@
-Theres no major instruction...Just change the values in .env
